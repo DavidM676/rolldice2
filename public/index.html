@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rolling Dice</title>
+</head>
+<body>
+    <h1>Rolling Dice</h1>
+    <div style="display:grid;grid-template-columns: auto auto;">
+        <p>How many dice do you want to roll</p>
+        <input type="text" id="x" oninput="check()">
+        <p>How many times do you want to roll</p>
+        <input type="text" id="y" oninput="check()">
+    </div>
+    <button id="rollButton">Roll Dice</button>
+    <div class="dice">
+        <!-- <img id="die1" src="images/dice-1.png" alt="Die 1">
+        <img id="die2" src="images/dice-1.png" alt="Die 2"> -->
+    </div>
+    <p>Total: <span id="total">0</span></p>
+    <script src="script.js"></script>
+</body>
+</html>
