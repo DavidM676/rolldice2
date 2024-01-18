@@ -11,6 +11,23 @@ function generateTable(data) {
     return table;  
 }
 
+function getMedians(numbers) {
+    let medians = [];
+    for (let i = 0; i<numbers.length; i++) {
+        let sn = numbers[i].sort(function(a, b) {
+            return a - b;
+          });
+        const mi = Math.floor(sn.length / 2);
+
+        if (sn.length % 2 === 0) {
+            medians.push((sn[mi - 1] + sn[mi]) / 2);
+        } else {
+            medians.push(sn[mi]);
+        }
+    }
+    return medians;
+}
+
 function getFreq(numbers) {
     let freq_freq = [0,0,0,0,0,0];
     let freqs = [];
@@ -25,7 +42,6 @@ function getFreq(numbers) {
 }
 
 function getModeTotal(freq_freq) {
-    console.log("FF", freq_freq)
     let c = freq_freq[0];
     for (let i = 0; i<freq_freq.length; i++) {
         if (freq_freq[i]>c) {
@@ -35,6 +51,24 @@ function getModeTotal(freq_freq) {
     
     return [freq_freq.indexOf(c), c];
      
+}
+
+function getModeRolls(freqs) {
+    let modes = [];
+    for (let i = 0; i <freqs.length; i++) {
+        let cr = freqs[i];
+
+        let c = cr[0];
+        for (let j = 0; j<cr.length; j++) {
+            if (cr[j]>c) {
+                c=cr[j];
+            }
+        }
+
+        modes.push([cr.indexOf(c), c]);
+
+    }
+    return modes;
 }
 
 function getDoubles(numbers) {
@@ -122,8 +156,17 @@ function getSpecs(numbers) {
     dataTotal["triples"] = e;
 
     f = getModeTotal(c[1])
-    console.log("this is f: ", f);
-    dataTotal["Mode"] = f[0]
+    dataTotal["mode"] = f;
+
+    g = getModeRolls(c[0]);
+    for (i=0; i<g.length; i++) {
+        data[i]["mode"] = g[i];
+    }
+
+    h = getMedians(numbers);
+    for (i=0; i<h.length; i++) {
+        data[i]["median"] = h[i];
+    }
 
     console.log(data);
     console.log(dataTotal);
@@ -137,8 +180,15 @@ function getSpecs(numbers) {
 
 function displayTotal(dataTotal) {
     let table = '<table>';  
-    table += '<tr><th>Total</th><th>Mean</th><th>Frequency</th><th>Doubles</th><th>Triples</th></tr>';  
-    table += `<tr><td>${dataTotal["total"]}</td><td>${dataTotal["mean"].toFixed(2)}</td><td>${dataTotal["frequency"]}</td><td>${dataTotal["doubles"]}</td><td>${dataTotal["triples"]}</td></tr>`;  
+    table += '<tr><th>Total</th><th>Mean</th><th>Frequency</th><th>Doubles</th><th>Triples</th><th>Mode</th></tr>';  
+    table += `<tr>
+                <td>${dataTotal["total"]}</td>
+                <td>${dataTotal["mean"].toFixed(2)}</td>
+                <td>${dataTotal["frequency"]}</td>
+                <td>${dataTotal["doubles"]}</td>
+                <td>${dataTotal["triples"]}</td>
+                <td>The Mode is rolling a ${dataTotal["mode"][0]+1} with a frquency of ${dataTotal["mode"][1]}</td>
+            </tr>`;  
     
     table += '</table>';  
     return table;  
@@ -147,10 +197,19 @@ function displayTotal(dataTotal) {
 
 function displayRolls(data) {
     let table = '<table>';  
-    table += '<tr>><th>Roll #</th><th>Total</th><th>Mean</th><th>Frequency</th><th>Doubles</th><th>Triples</th></tr>';  
+    table += '<tr>><th>Roll #</th><th>Total</th><th>Mean</th><th>Frequency</th><th>Doubles</th><th>Triples</th>><th>Mode</th><th>Median</th></tr>';  
     for (let i = 0; i<data.length; i++) {
         roll = data[i]
-        table += `<tr><td>${i+1}</td><td>${roll["total"]}</td><td>${roll["mean"].toFixed(2)}</td><td>${roll["frequency"]}</td><td>${roll["doubles"]}</td><td>${roll["triples"]}</td></tr>`;  
+        table += `<tr>
+                    <td>${i+1}</td>
+                    <td>${roll["total"]}</td>
+                    <td>${roll["mean"].toFixed(2)}</td>
+                    <td>${roll["frequency"]}</td>
+                    <td>${roll["doubles"]}</td>
+                    <td>${roll["triples"]}</td>
+                    <td>The Mode is rolling a ${roll["mode"][0]+1} with a frquency of ${roll["mode"][1]}</td>
+                    <td>${roll["median"]}</td>
+                    </tr>`;  
     }
     
     table += '</table>';  
@@ -160,7 +219,6 @@ function displayRolls(data) {
 function genNums(x, y) {
 
     var numbers = [];
-    console.log(x,y);
     for (let i = 0; i<y; i++) {
         let arr = [];
         for (let j = 0; j<x; j++) {
@@ -168,7 +226,6 @@ function genNums(x, y) {
         }
         numbers.push(arr); 
 }   
-    console.log(numbers);
     getSpecs(numbers);
     // getTotal(numbers);
 

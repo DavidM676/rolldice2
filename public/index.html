@@ -8,18 +8,20 @@
 </head>
 <body>
     <h1>Rolling Dice</h1>
-    <div style="display:grid;grid-template-columns: auto auto;">
-        <p>How many dice do you want to roll</p>
-        <input type="text" id="x" oninput="check()">
-        <p>How many times do you want to roll</p>
-        <input type="text" id="y" oninput="check()">
+    <div class="inputgrid">
+        <p style="font-weight: 100; font-size: 35px; font-family: 'g3';">How many dice do you want to roll🎲🎲</p>
+        <input type="text" id="x" oninput="check()" class="textin">
+
+        <p style="font-weight: 100; font-size: 35px; font-family: 'g3';">How many times do you want to roll🔁🔁</p>
+        <input type="text" id="y" oninput="check()" class="textin">
     </div>
-    <button id="rollButton">Roll Dice</button>
+    <button id="rollButton"  style="font-weight: 100; font-size: 35px; font-family: 'g1';   letter-spacing: 3px;
+    ">Roll Again🔂</button>
     <div class="dice">
         <!-- <img id="die1" src="images/dice-1.png" alt="Die 1">
         <img id="die2" src="images/dice-1.png" alt="Die 2"> -->
     </div>
-    <p>Total: <span id="total">0</span></p>
+    <p style=" color: #0d131b; font-weight: 100; font-family: 'hyper'; font-size: 50px;">Total: <span id="total">0</span></p>
     <h3>For all rolls</h3>
     <div id="table_container"></div>
 

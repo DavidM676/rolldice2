@@ -1,12 +1,40 @@
+@font-face {
+    font-family: 'hyper';
+    src: url('fonts/HyperFatosRegular.otf') format('opentype');
+
+}
+
+@font-face {
+    font-family: 'g1';
+    src: url('fonts/aAnotherTag.otf') format('opentype');
+
+}
+
+@font-face {
+    font-family: 'g2';
+    src: url('fonts/docallismeonstreet.otf') format('opentype');
+
+}
+@font-face {
+    font-family: 'g3';
+    src: url('fonts/adrip1.ttf') format('opentype');
+
+}
+
 body {
     text-align: center;
-    font-family: Arial, sans-serif;
-    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
-
+    
+    background: rgb(149,255,78);
+    background: linear-gradient(90deg, rgba(149,255,78,1) 0%, rgba(51,255,112,1) 50%, rgba(0,255,58,1) 100%);
 }
 
 h1 {
     color: #000000;
+    font-family: 'g2';
+    font-size: 100px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: 100;
 }
 
 button {
@@ -37,4 +65,17 @@ p {
 }
 
 
+
+.textin {
+    border-radius: 10px;
+    margin: 10px;
+    border: #000000 solid 4px;
+}
+
+
+.inputgrid {
+    display:grid;
+    grid-template-columns: auto auto;
+    
+}
 
