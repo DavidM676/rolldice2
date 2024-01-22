@@ -23,7 +23,6 @@
 
 body {
     text-align: center;
-    
     background: rgb(149,255,78);
     background: linear-gradient(90deg, rgba(149,255,78,1) 0%, rgba(51,255,112,1) 50%, rgba(0,255,58,1) 100%);
 }
@@ -79,3 +78,37 @@ p {
     
 }
 
+
+
+table{
+
+    margin: auto auto auto auto;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+}
+table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #202d44;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #007bff33;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #007bff;
+}
