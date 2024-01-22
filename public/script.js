@@ -1,6 +1,8 @@
 let data = [];
 let dataTotal = {};
 
+
+
 function generateTable(data) {  
     let table = '<table>';  
     table += '<tr><th>Name</th><th>Age</th><th>Email</th></tr>';  
@@ -179,6 +181,7 @@ function getSpecs(numbers) {
 }
 
 function displayTotal(dataTotal) {
+
     let table = '<table>';  
     table += '<tr><th>Total</th><th>Mean</th><th>Frequency</th><th>Doubles</th><th>Triples</th><th>Mode</th></tr>';  
     table += `<tr>
@@ -197,16 +200,15 @@ function displayTotal(dataTotal) {
 
 function displayRolls(data) {
     let table = '<table>';  
-    table += '<tr>><th>Roll #</th><th>Total</th><th>Mean</th><th>Frequency</th><th>Doubles</th><th>Triples</th>><th>Mode</th><th>Median</th></tr>';  
+    table += '<tr><th>Roll #</th><th>Total</th><th>Mean</th><th>Frequency</th><th>Mode</th><th>Median</th></tr>';  
     for (let i = 0; i<data.length; i++) {
         roll = data[i]
         table += `<tr>
                     <td>${i+1}</td>
                     <td>${roll["total"]}</td>
                     <td>${roll["mean"].toFixed(2)}</td>
-                    <td>${roll["frequency"]}</td>
-                    <td>${roll["doubles"]}</td>
-                    <td>${roll["triples"]}</td>
+                    <td>${roll["frequency"]}  </td>
+
                     <td>The Mode is rolling a ${roll["mode"][0]+1} with a frquency of ${roll["mode"][1]}</td>
                     <td>${roll["median"]}</td>
                     </tr>`;  
@@ -230,7 +232,11 @@ function genNums(x, y) {
     // getTotal(numbers);
 
 }
+
+
 function check() {
+    data = [];
+    dataTotal = {};
     var x = document.getElementById("x");
     var y = document.getElementById("y");
     if (x.value!="" && y.value!="") {
@@ -241,3 +247,4 @@ function check() {
     }
     
 }
+
